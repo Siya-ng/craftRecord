@@ -22,3 +22,21 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+------
+## ERD
+![ERD](./app/assets/images/ERD_1.jpg)
+-------
+
+## Development Log
+
+14 Jan 2018
+* init commit
+* install relevant gem files
+* add a few models
+
+15 Jan 2018
+* add models and necessary relationship
+* add header
+* scaffold category & type
+* able to create material

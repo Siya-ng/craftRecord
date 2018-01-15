@@ -4,9 +4,9 @@ class Project
   field :title, type: String
   field :created_date, type: Date
   field :completed_date, type: Date
-  field :stage, type: Integar # ongoing or completed
+  field :stage, type: Integer# ongoing or completed
   field :category, type: String
-  field :no_of_steps, type: Integar
+  field :no_of_steps, type: Integer
   has_many :steps
   field :review, type: String
   field :completed_photos, type: Array

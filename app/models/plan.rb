@@ -2,7 +2,7 @@ class Plan
   include Mongoid::Document
   belongs_to :user
   field :title, type: String
-  field :no_of_steps, type: Integar
+  field :no_of_steps, type: Integer
   field :notes, type: String
   embeds_many :photos, as: :photographic, store_as: "inspiration"
   embeds_many :photos, as: :photographic, store_as: "plan"

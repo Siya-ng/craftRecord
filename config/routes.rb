@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
+  resources :categories
+  resources :types
   devise_for :users
 
-  get 'main/index'
-  get 'main/about'
-
-  root 'main#index'
-  get 'about' => 'main#about'
+  root 'main#home'
+  get 'main/home'
 
 
 
-  resources :plan
-  resources :material
-  resources :project
+
+
+  resources :plans
+  resources :materials
+  resources :projects
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
