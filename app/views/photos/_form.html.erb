@@ -1,7 +1,7 @@
 <div class="form group">
   <%= form_for [photographic, Photo.new] do |form| %>
   <%= form.hidden_field :photographic_type, value: "material" %>
-  <%= uploadcare_uploader_field :post, :file %>
+  <%= form.uploadcare_field :url %>
   <%= form.label :comment %>
   <%= form.text_field :comment %>
   <div class="modal-footer">

@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    url = post.file
+
     params.require(:photo).permit(:comment, :url)
   end
 end
