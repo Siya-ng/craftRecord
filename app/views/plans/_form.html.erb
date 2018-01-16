@@ -1,0 +1,19 @@
+<%= form_with(model: @plan, local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= form.label :category %><br />
+    <%= form.select :category, options_for_select(Category.all.map{|category|[category.name]}) %>
+    <%= form.label :no_of_steps %>
+    <%= form.text_field :no_of_steps %>
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,64 @@
+<h2>Show for plan</h2>
+<div class="imageSlot">
+  <div class="">
+    <button type="button" href="/plans/<%=@plan.id%>/projects/new" name="button">Attempt</button>
+  </div>
+  <div class="planphoto">
+    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addphoto">
+      Add Photo
+    </button>
+    <% if @plan.photos %>
+    <% @plan.photos.each do |photo| %>
+    <div class="">
+      <img src="<%= photo.url %>" alt="photo">
+    </div>
+    <% end  %>
+    <% end  %>
+  </div>
+</div>
+<div class="planinfo">
+  <h4><%= @plan.title %></h4>
+  <h4><%= @plan.category%></h4>
+  <h4><%= @plan.no_of_steps %></h4>
+  <h4><%= @plan.notes %></h4>
+
+</div>
+
+<div class="planProject">
+  <% if @plan.projects %>
+    <% @plan.projects do |project| %>
+    <h4><%= project.title %></h4>
+    <% end %>
+
+  <% end  %>
+</div>
+<div class="planMaterials">
+  <% if @plan.materials %>
+    <% @plan.materials do |material| %>
+    <h4><%= material.title %></h4>
+    <% end %>
+
+  <% end  %>
+</div>
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="addphoto" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= render partial: "photos/form", locals: {photographic:@plan} %>
+
+      </div>
+    </div>
+  </div>
+</div>

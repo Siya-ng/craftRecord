@@ -1,6 +1,6 @@
 <div class="form group">
   <%= form_for [photographic, Photo.new] do |form| %>
-  <%= form.hidden_field :photographic_type, value: "material" %>
+  <%= form.hidden_field :photographic_type, value: @photo_type %>
   <%= form.uploadcare_field :url %>
   <%= form.label :comment %>
   <%= form.text_field :comment %>

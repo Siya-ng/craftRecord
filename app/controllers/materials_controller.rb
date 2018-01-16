@@ -20,7 +20,8 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
-    @photo = Photo.new
+    @photo_type = "material"
+
   end
 
   def update
