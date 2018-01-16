@@ -40,3 +40,6 @@ Things you may want to cover:
 * add header
 * scaffold category & type
 * able to create material
+* able to create plan
+* add method that create project based on plan
+* able to upload photos for materials and plan
