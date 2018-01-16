@@ -1,0 +1,46 @@
+<h2>Show for material</h2>
+<div class="imageSlot">
+  <button type="button" class="btn btn-primary addmaterialphoto" data-toggle="modal" data-target="#addmaterialphoto">
+    Add Photo
+  </button>
+  <% if @material.photos %>
+   <% @material.photos.each do |photo| %>
+    <div class="">
+      <img src="<%= photo.url %>" alt="photo">
+    </div>
+    <% end  %>
+  <% end  %>
+
+</div>
+<div class="materialinfo">
+  <h4><%= @material.title %></h4>
+  <h4><%= @material.type %></h4>
+  <h4><%= @material.qty %></h4>
+</div>
+
+<div class="materialProject">
+  <%= @material.plan %>
+  <%= @material.project%>
+
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="addmaterialphoto" tabindex="-1" role="dialog" aria-labelledby="addmaterialphoto" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= render partial: "photos/form", locals: {photographic:@material} %>
+
+      </div>
+    </div>
+  </div>
+</div>

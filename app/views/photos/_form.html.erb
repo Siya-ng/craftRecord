@@ -1,0 +1,15 @@
+<div class="form group">
+  <%= form_for [photographic, Photo.new] do |form| %>
+  <%= form.hidden_field :photographic_type, value: "material" %>
+  <%= uploadcare_uploader_field :post, :file %>
+  <%= form.label :comment %>
+  <%= form.text_field :comment %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div>
+
+  <% end %>
+</div>

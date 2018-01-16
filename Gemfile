@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'uploadcare-rails', "~> 1.1"
+
 gem 'mongoid', '~> 6.1.0'
 
 gem 'devise'

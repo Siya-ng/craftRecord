@@ -1,10 +1,13 @@
 class MaterialsController < ApplicationController
   def index
-    @material = Material.all
+    @materials = Material.all
   end
 
   def create
-    current_user.material.create(params.require(:material).permit(:title, :type, :qty))
+    current_user.materials.create(params.require(:material).permit(:title, :type, :qty))
+
+    flash[:notice] = "successfully created"
+    redirect_to "/"
   end
 
   def new
@@ -16,7 +19,8 @@ class MaterialsController < ApplicationController
   end
 
   def show
-
+    @material = Material.find(params[:id])
+    @photo = Photo.new
   end
 
   def update
