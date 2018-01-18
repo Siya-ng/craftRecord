@@ -1,0 +1,33 @@
+<%= form_with(model: @project, local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <div class="">
+      <%= form.label :category %><br />
+      <%= form.select :category, options_for_select(Category.all.map{|category|[category.name]}) %>
+    </div>
+    <%= form.label :no_of_steps %>
+    <%= form.text_field :no_of_steps %>
+    <div class="">
+      <h5>Current Stage</h5>
+
+      <%= form.radio_button :stage, 1 %>
+      <%= form.label :stage_1, 'ongoing' %>
+      <%= form.radio_button :stage, 2 %>
+      <%= form.label :stage_2, 'completed' %>
+
+    </div>
+    <div class="">
+      <%= form.label :review %>
+      <%= form.text_field :review %>
+
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

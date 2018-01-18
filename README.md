@@ -45,3 +45,10 @@ Things you may want to cover:
 * able to create plan
 * add method that create project based on plan
 * able to upload photos for materials and plan
+
+18 Jan 2018
+* able to create project from plan's attempt button
+* able to create steps related to projects from no of steps.
+* able to create photos for each steps.
+* able to create individual project
+* link up header

@@ -29,7 +29,7 @@ class Plan
         new_step.save
       end
     @current_project.save
-
+    return   @current_project.id
 
   end
 end

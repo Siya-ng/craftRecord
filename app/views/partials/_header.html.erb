@@ -26,8 +26,8 @@
             Ongoing Project
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">New</a>
-            <a class="dropdown-item" href="#">Current</a>
+            <a class="dropdown-item" href="/projects/new">New</a>
+            <a class="dropdown-item" href="/projects/ongoing">Current</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -35,8 +35,8 @@
             Completed Project
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">New</a>
-            <a class="dropdown-item" href="#">Current</a>
+            <a class="dropdown-item" href="/projects/new">New</a>
+            <a class="dropdown-item" href="/projects/completed">Current</a>
           </div>
         </li>
       </ul>
@@ -48,7 +48,6 @@
         <li class="nav-item"><%= link_to "Register", new_user_registration_path, :class =>"nav-link" %></li>
         <% else %>
 
-        <li class="nav-item"><a class="nav-link" href="/cart"><i class="material-icons">shopping_basket</i></a></li>
         <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class =>"nav-link"%></li>
 
         <% end %>

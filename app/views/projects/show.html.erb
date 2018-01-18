@@ -1,0 +1,102 @@
+<h2>Show for project</h2>
+<div class="imageSlot">
+
+  <div class="planphoto">
+    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addphoto">
+      Add Photo
+    </button>
+    <% if @project.photos %>
+    <% @project.photos.each do |photo| %>
+    <div class="">
+      <img src="<%= photo.url %>" alt="photo">
+    </div>
+    <% end  %>
+    <% end  %>
+  </div>
+</div>
+<div class="planinfo">
+  <h4><%= @project.title %></h4>
+  <h4><%= @project.category%></h4>
+  <h4><%= @project.no_of_steps %></h4>
+
+</div>
+<% if @project.stage == 1  %>
+  <div class="steparray">
+    <% @project.steps.each do |step|  %>
+    <% if step.status %>
+    <h5 class="incompleted"><%= step.title %></h5>
+    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+      Add Photo
+    </button>
+
+    <% else  %>
+    <h5 class="completed"><%= step.title %></h5>
+    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+      Add Photo
+    </button>
+    <% end %>
+    <% end  %>
+<% else %>
+ <div class="steparraycompleted">
+  <% @project.steps.each do |step|  %>
+  <% if step.photos %>
+  <% step.photos.each do |photo| %>
+  <div class="">
+    <img src="<%= photo.url %>" alt="photo">
+    <h5><%= step.title %></h5>
+    <p><%= photo.comment %></p>
+
+  </div>
+  <% end %>
+
+  <% end  %>
+  <% end %>
+</div>
+<% end %>
+
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="addphoto" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= render partial: "photos/form", locals: {photographic:@project} %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @project.steps.each do |step|  %>
+
+
+<div class="modal fade" id="addstepphoto<%= step.title %>" tabindex="-1" role="dialog" aria-labelledby="addstepphoto<%= step.title %>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Photo for <%= step.title %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "photos/form", locals: {photographic:step} %>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end  %>

@@ -1,7 +1,7 @@
 <h2>Show for plan</h2>
 <div class="imageSlot">
   <div class="">
-    <button type="button" href="/plans/<%=@plan.id%>/projects/new" name="button">Attempt</button>
+    <%= button_to "Attempt", plan_projects_path(plan_id:@plan.id) , remote: true%>
   </div>
   <div class="planphoto">
     <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addphoto">

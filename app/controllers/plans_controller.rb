@@ -5,10 +5,10 @@ class PlansController < ApplicationController
   end
 
   def create
-    current_user.plans.create(params.require(:plan).permit(:title, :category, :no_of_steps, :notes))
+    new_plan = current_user.plans.create(params.require(:plan).permit(:title, :category, :no_of_steps, :notes))
 
     flash[:notice] = "successfully created"
-    redirect_to "/"
+    redirect_to "/plans/#{new_plan.id}"
   end
 
   def new
@@ -29,9 +29,9 @@ class PlansController < ApplicationController
 
   end
 
-  def new_plan_project
-    @plan = Plan.find(params[:id])
-  end
+  # def new_plan_project
+  #   @plan = Plan.find(params[:id])
+  # end
 
 
 
