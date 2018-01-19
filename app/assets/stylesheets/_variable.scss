@@ -1,0 +1,55 @@
+$primary-color: #F3B3A6;
+$second-color: #9DA3A4;
+$font-color: #000000;
+
+
+.body {
+  width: 100%;
+  background-color: $primary-color;
+}
+.container {
+  width: 90%;
+}
+
+.steparray {
+  display: inline-flex;
+  border: 2px solid black;
+  margin-top: 50px;
+
+}
+
+.eachstep {
+  width: 50px;
+  border: 0.5px solid black;
+  padding-bottom: 4px;
+}
+
+.image-slide {
+  width: 400px;
+}
+.project-information{
+  width: 600px;
+  margin-left: 50px;
+}
+
+.project-details{
+  display: inline-flex;
+}
+
+
+.no-photo {
+  width: 500px;
+  background-color: grey;
+  border-radius: 20px;
+
+}
+.addphoto {
+  position: relative;
+  right: 0px;
+}
+.carousel-control-prev{
+  height: 50%;
+  position: relative;
+  vertical-align: middle !important;
+  background-color: $second-color;
+}

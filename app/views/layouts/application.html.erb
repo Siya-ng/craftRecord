@@ -9,16 +9,24 @@
     <%= csrf_meta_tags %>
     <%= include_uploadcare_widget_from_cdn version: "2.x", min: true %>
     <%= uploadcare_settings %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                          'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   </head>
 
   <body>
     <%= render 'partials/header' %>
-    <div class=" center-align">
+    <div class="body">
+      <div class=" center-align">
         <p class="notice center-align"><%= notice %></p>
         <p class="alert center-align"><%= alert %></p>
+      </div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
-    <%= yield %>
 
 
     <%= render 'partials/footer' %>

@@ -52,3 +52,6 @@ Things you may want to cover:
 * able to create photos for each steps.
 * able to create individual project
 * link up header
+
+19 Jan 2018
+* edit the view for plan & project: added image slider 

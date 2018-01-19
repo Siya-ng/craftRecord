@@ -1,45 +1,82 @@
 <h2>Show for project</h2>
-<div class="imageSlot">
+<div class="project-details">
 
-  <div class="planphoto">
-    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addphoto">
+  <div class="project-photo">
+    <% if @project.photos.length > 0 %>
+    <button type="button" class="btn btn-secondary addphoto" data-toggle="modal" data-target="#addphoto">
       Add Photo
     </button>
-    <% if @project.photos %>
-    <% @project.photos.each do |photo| %>
-    <div class="">
-      <img src="<%= photo.url %>" alt="photo">
+    <div id="carouselExampleIndicators" class="carousel slide image-slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <% if @project.photos.length > 1 %>
+        <% @project.photos.length.times do |no_of_time| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= no_of_time+1 %>"></li>
+        <% end %>
+        <% end  %>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-40 img-thumbnail" src="<%=  @project.photos.first.url %>" alt="photo">
+        </div>
+        <% @project.photos.each do |photo| %>
+        <div class="carousel-item">
+          <img class="d-block w-40 img-thumbnail" src="<%= photo.url %>" alt="photo">
+        </div>
+        <% end  %>
+      </div>
+      <a class=" align-self-center mr-3 carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <% else %>
+    <div class="no-photo">
+      <h4>no Photos</h4>
     </div>
     <% end  %>
-    <% end  %>
+
   </div>
-</div>
-<div class="planinfo">
-  <h4><%= @project.title %></h4>
-  <h4><%= @project.category%></h4>
-  <h4><%= @project.no_of_steps %></h4>
+
+
+  <div class="project-information">
+    <h4>Title: <%= @project.title %></h4>
+    <h4>Category: <%= @project.category%></h4>
+    <h4>No of steps: <%= @project.no_of_steps %></h4>
+
+  </div>
+
 
 </div>
+
 <% if @project.stage == 1  %>
   <div class="steparray">
     <% @project.steps.each do |step|  %>
     <% if step.status %>
-    <h5 class="incompleted"><%= step.title %></h5>
-    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
-      Add Photo
-    </button>
+    <div class="eachstep text-center">
+      <h5 class="incompleted"><%= step.title %></h5>
+      <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+        <span class="glyphicon glyphicon-picture"></span>+
+      </button>
+    </div>
 
     <% else  %>
-    <h5 class="completed"><%= step.title %></h5>
-    <button type="button" class="btn btn-primary addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
-      Add Photo
-    </button>
+    <div class="eachstep text-center">
+      <h5 class="completed "><%= step.title %></h5>
+      <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+        <span class="glyphicon glyphicon-picture"></span>+
+      </button>
+    </div>
     <% end %>
     <% end  %>
 <% else %>
  <div class="steparraycompleted">
   <% @project.steps.each do |step|  %>
-  <% if step.photos %>
+  <% if step.photos.length > 0 %>
   <% step.photos.each do |photo| %>
   <div class="">
     <img src="<%= photo.url %>" alt="photo">
