@@ -58,4 +58,4 @@ Things you may want to cover:
 
 20 Jan 2018
 * edit the view for project's image slider
-* attempt to push to heroku but failed (due to uploadcare)
+* push to heroku
