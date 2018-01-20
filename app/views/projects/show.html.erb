@@ -1,12 +1,23 @@
-<h2>Show for project</h2>
+<div class="row">
+  <h2><%= @project.title %>
+    <% if @project.stage == 1 %>
+    (Ongoing)
+    <% else %>
+    (Completed)
+    <% end %>
+
+  </h2>
+  <% if @project.stage == 1 %>
+  <%= button_to "Completed", projects_ongoing_complete_path(project_id:@project.id) , remote: true , class:"btn btn-secondary project-complete-btn"%>
+  <% end %>
+</div>
+
 <div class="project-details">
 
   <div class="project-photo">
     <% if @project.photos.length > 0 %>
-    <button type="button" class="btn btn-secondary addphoto" data-toggle="modal" data-target="#addphoto">
-      Add Photo
-    </button>
     <div id="carouselExampleIndicators" class="carousel slide image-slide" data-ride="carousel">
+
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <% if @project.photos.length > 1 %>
@@ -25,18 +36,24 @@
         </div>
         <% end  %>
       </div>
-      <a class=" align-self-center mr-3 carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <a class="carousel-control-prev carousel-control" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <a class="carousel-control-next carousel-control" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+      <button type="button" class="btn btn-secondary add-project-photo" data-toggle="modal" data-target="#addphoto">
+        +
+      </button>
     </div>
     <% else %>
     <div class="no-photo">
-      <h4>no Photos</h4>
+      <button type="button" class="btn btn-secondary add-project-photo" data-toggle="modal" data-target="#addphoto">
+        +
+      </button>
+      <h4 class="no-photo-text">No Photos</h4>
     </div>
     <% end  %>
 
@@ -44,16 +61,41 @@
 
 
   <div class="project-information">
-    <h4>Title: <%= @project.title %></h4>
     <h4>Category: <%= @project.category%></h4>
     <h4>No of steps: <%= @project.no_of_steps %></h4>
+    <div class="project-step">
 
+      <h4>Steps:</h4>
+
+      <div class="column-step-array">
+        <% @project.steps.each do |step|  %>
+        <% if step.status %>
+        <div class="each-step-row text-center">
+          <h5 class="incompleted"><%= step.title %></h5>
+          <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+            <span class="glyphicon glyphicon-picture"></span>+
+          </button>
+        </div>
+
+        <% else  %>
+        <div class="each-step-row text-center">
+          <h5 class="completed"><%= step.title %></h5>
+          <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
+            <span class="glyphicon glyphicon-picture"></span>+
+          </button>
+        </div>
+        <% end %>
+        <% end  %>
+      </div>
+    </div>
   </div>
 
 
 </div>
+<div class="project-step">
 
-<% if @project.stage == 1  %>
+  <h4>Steps:</h4>
+
   <div class="steparray">
     <% @project.steps.each do |step|  %>
     <% if step.status %>
@@ -73,23 +115,30 @@
     </div>
     <% end %>
     <% end  %>
-<% else %>
- <div class="steparraycompleted">
-  <% @project.steps.each do |step|  %>
-  <% if step.photos.length > 0 %>
-  <% step.photos.each do |photo| %>
-  <div class="">
-    <img src="<%= photo.url %>" alt="photo">
-    <h5><%= step.title %></h5>
-    <p><%= photo.comment %></p>
-
   </div>
-  <% end %>
-
-  <% end  %>
-  <% end %>
 </div>
-<% end %>
+
+<div class="project-step-photo">
+
+  <h4>Photos: </h4>
+  <div class="steparrayphoto">
+    <% @project.steps.each do |step|  %>
+    <% if step.photos.length > 0 %>
+    <% step.photos.each do |photo| %>
+    <div class="each-step-photo">
+      <img src="<%= photo.url %>" alt="photo">
+      <h5><%= step.title %></h5>
+      <p><%= photo.comment %></p>
+
+    </div>
+    <% end %>
+    <% end  %>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 
 

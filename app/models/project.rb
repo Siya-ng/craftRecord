@@ -40,4 +40,13 @@ class Project
     end
 
   end
+
+  def update_stage
+    @current_project = Project.find(self.id)
+    @current_project.stage = 2
+    @current_project.steps.each do |step|
+      step.status = true
+    end
+    @current_project.save
+  end
 end

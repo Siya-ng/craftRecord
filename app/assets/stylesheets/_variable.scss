@@ -6,16 +6,22 @@ $font-color: #000000;
 .body {
   width: 100%;
   background-color: $primary-color;
+
+  margin-top: 0;
+  padding-top: 0;
 }
 .container {
   width: 90%;
+  padding-bottom: 20px;
 }
-
+.project-step {
+  margin-top: 30px;
+}
 .steparray {
   display: inline-flex;
   border: 2px solid black;
-  margin-top: 50px;
-
+  align-self: center;
+  width: 90%;
 }
 
 .eachstep {
@@ -32,24 +38,107 @@ $font-color: #000000;
   margin-left: 50px;
 }
 
-.project-details{
+.project-details, .steparrayphoto{
   display: inline-flex;
 }
 
 
 .no-photo {
+  position: relative;
   width: 500px;
-  background-color: grey;
-  border-radius: 20px;
-
+  height: 500px;
+  background-color: $second-color;
+  border-radius: 10px;
+}
+.no-photo-text{
+  position: absolute;
+  top: 50%;
+  left:40%;
 }
 .addphoto {
   position: relative;
   right: 0px;
 }
-.carousel-control-prev{
-  height: 50%;
+.add-project-photo{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.row {
   position: relative;
-  vertical-align: middle !important;
+}
+.project-complete-btn{
+  right:0;
+  position: absolute;
+}
+.carousel-control{
+  height: 50px;
+  width: 50px !important;
+  border-radius: 25px;
+  top: 50% !important;
   background-color: $second-color;
+  border: 2px solid white;
+}
+.carousel-control-prev{
+  position: absolute !important;
+
+
+}
+.carousel-indicators li {
+  width: 15px !important;
+  height: 15px !important;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.carousel-indicators li:hover {
+  opacity: 0.9;
+}
+.steparrayphoto{
+  border: 1px solid black;
+}
+.project-step-photo {
+  margin-top: 50px;
+}
+
+
+.each-step-photo {
+  display: block;
+  text-align: center;
+}
+
+.each-step-photo img{
+  width: 150px;
+}
+.column-step-array{
+  width: inherit;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.each-step-row{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-content: center;
+  width: 60px;
+  border: 0.5px solid black;
+  padding: 2px;
+}
+.completed{
+  color: $second-color;
+  padding: 3px;
+  padding-right: 5px;
+}
+.incomplete{
+  padding: 3px;
+}
+.footer {
+  background-color: #5B4846;
+  bottom: 0;
+  text-align: center;
+  height: 40px;
+  padding: 5px;
+
 }

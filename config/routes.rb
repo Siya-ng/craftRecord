@@ -20,9 +20,11 @@ Rails.application.routes.draw do
 
   get '/projects/ongoing', to: 'projects#ongoing'
   get '/projects/completed', to: 'projects#completed'
+
   resources :projects do
     resources :photos, module: :projects
   end
+  post "/projects/ongoing/complete", to: 'projects#stepscomplete'
 
   resources :steps do
     resources :photos, module: :steps

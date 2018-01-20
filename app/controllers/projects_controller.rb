@@ -10,7 +10,14 @@ class ProjectsController < ApplicationController
   def completed
     @projects = Project.completed(current_user.id)
   end
-  
+
+  def stepscomplete
+    this_project = Project.find(params[:project_id])
+    this_project.update_stage
+    flash[:notice] = "project successfully update"
+    redirect_to "/projects/#{this_project.id}"
+  end
+
   def create
     new_project = current_user.projects.create(params.require(:project).permit(:title, :category, :no_of_steps, :stage, :review))
     no_of_steps = new_project.no_of_steps
@@ -30,7 +37,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-
+    @project = Project.find(params[:id])
   end
 
   def show
@@ -40,6 +47,17 @@ class ProjectsController < ApplicationController
   end
 
   def update
+      respond_to do |format|
+        if @project.update(params[:project])
+          format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+          format.json { render :show, status: :ok, location: @project }
+        else
+          format.html { render :edit }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+      end
+
+
 
   end
 
