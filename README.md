@@ -54,4 +54,8 @@ Things you may want to cover:
 * link up header
 
 19 Jan 2018
-* edit the view for plan & project: added image slider 
+* edit the view for plan & project: added image slider
+
+20 Jan 2018
+* edit the view for project's image slider
+* attempt to push to heroku but failed (due to uploadcare)
