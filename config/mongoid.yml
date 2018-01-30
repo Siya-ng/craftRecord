@@ -3,6 +3,7 @@ development:
   clients:
     # Defines the default client. (required)
     default:
+      uri: mongodb://<dbuser>:<dbpassword>@ds263837.mlab.com:63837/heroku_0ldrzz5w
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: craft_record__rails_development
