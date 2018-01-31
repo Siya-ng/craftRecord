@@ -158,9 +158,8 @@ test:
         max_pool_size: 1
 
 production:
-  sessions:
+  clients:
     default:
       uri: <%= ENV['MONGODB_URI'] %>
       options:
-        skip_version_check: true
-        safe: true
+        connect_timeout: 15
