@@ -69,9 +69,10 @@
 
       <div class="column-step-array">
         <% @project.steps.each do |step|  %>
-        <% if step.status %>
+        <% if !step.status %>
         <div class="each-step-row text-center">
-          <h5 class="incompleted"><%= step.title %></h5>
+          <h5 class="incompletedStep"><%= step.title %></h5>
+          <input class="stepId" type="hidden" name="" value="<%= step.id%>">
           <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
             <span class="glyphicon glyphicon-picture"></span>+
           </button>
@@ -79,7 +80,8 @@
 
         <% else  %>
         <div class="each-step-row text-center">
-          <h5 class="completed"><%= step.title %></h5>
+          <h5 class="completedStep"><%= step.title %></h5>
+          <input class="stepId" type="hidden" name="" value="<%= step.id%>">
           <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
             <span class="glyphicon glyphicon-picture"></span>+
           </button>
@@ -98,9 +100,9 @@
 
   <div class="steparray">
     <% @project.steps.each do |step|  %>
-    <% if step.status %>
+    <% if !step.status %>
     <div class="eachstep text-center">
-      <h5 class="incompleted"><%= step.title %></h5>
+      <h5 class="incompletedStep"><%= step.title %></h5>
       <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
         <span class="glyphicon glyphicon-picture"></span>+
       </button>
@@ -108,7 +110,7 @@
 
     <% else  %>
     <div class="eachstep text-center">
-      <h5 class="completed "><%= step.title %></h5>
+      <h5 class="completedStep"><%= step.title %></h5>
       <button type="button" class="btn btn-secondary btn-sm addphoto" data-toggle="modal" data-target="#addstepphoto<%= step.title %>">
         <span class="glyphicon glyphicon-picture"></span>+
       </button>

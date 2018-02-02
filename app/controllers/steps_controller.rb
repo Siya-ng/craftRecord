@@ -1,7 +1,9 @@
 class StepsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
 
   def index
-  
+
   end
 
   def create
@@ -13,7 +15,7 @@ class StepsController < ApplicationController
   end
 
   def edit
-
+    @step = Step.find(params[:id])
   end
 
   def show
@@ -23,6 +25,8 @@ class StepsController < ApplicationController
   end
 
   def update
+    @step = Step.find(params[:id])
+    @step.changeStatus
 
   end
 

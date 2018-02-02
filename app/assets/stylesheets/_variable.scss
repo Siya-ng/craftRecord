@@ -126,13 +126,15 @@ $font-color: #000000;
   border: 0.5px solid black;
   padding: 2px;
 }
-.completed{
+
+.completedStep{
   color: $second-color;
   padding: 3px;
   padding-right: 5px;
 }
-.incomplete{
+.incompleteStep{
   padding: 3px;
+  padding-right: 5px;
 }
 .footer {
   background-color: #5B4846;

@@ -3,7 +3,7 @@ development:
   clients:
     # Defines the default client. (required)
     default:
-      uri: <%= ENV['MONGODB_URI'] %>
+
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: craft_record__rails_development
@@ -162,4 +162,6 @@ production:
     default:
       uri: <%= ENV['MONGODB_URI'] %>
       options:
+        skip_version_check: true
+        safe: true
         connect_timeout: 15
